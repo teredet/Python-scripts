@@ -1,6 +1,10 @@
 def reverse_string(s):
+    '''
+    Takes a String and returns it back to front.
+    '''
     return "".join(reversed(s))
 
-# test
-data = reverse_string('TURBO')
-print(data)
+
+if __name__ == "__main__":
+    s = input()
+    print(reverse_string(s))

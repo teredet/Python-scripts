@@ -1,4 +1,7 @@
 def Fibonacci(n):
+	'''
+	Takes a number in the sequence of Fibonacci numbers and returns its value.
+	'''
 	if n < 0:
 		print("Incorrect input")
         
@@ -11,5 +14,7 @@ def Fibonacci(n):
 	else:
 		return Fibonacci(n-1) + Fibonacci(n-2)
 
-x = int(input('Enter the number: '))
-print(Fibonacci(x))
+
+if __name__ == "__main__":
+	x = int(input('Enter the number: '))
+	print(Fibonacci(x))
