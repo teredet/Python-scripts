@@ -1,5 +1,6 @@
 import time
 from functools import lru_cache
+import decimal
 
 # basic
 # very slow
@@ -40,7 +41,7 @@ def recursiveFibCached(n):
 		return recursiveFibCached(n-1) + recursiveFibCached(n-2)
 
 # iterative
-# This function can calculate the millionth Fibonacci number. In just 8s (on my laptop)
+# This function can calculate the millionth Fibonacci number. In just 8.0s (on my laptop)
 def iterativeFib(n):
     a, b = 0, 1
 
@@ -49,10 +50,22 @@ def iterativeFib(n):
 
     return a
 
+# Binet's formula
+# This function can calculate the millionth Fibonacci number. In just 8.6s (on my laptop)
+def BinetformulaFibWithDecimal(n):
+    decimal.getcontext().prec = 300000
+
+    root_5 = decimal.Decimal(5).sqrt()
+    phi = ((1 + root_5) / 2)
+
+    a = ((phi ** n) - ((-phi) ** -n)) / root_5
+
+    return round(a)
+
 
 if __name__ == "__main__":
 	x = int(input('Enter the number: '))
-	type_f = input("Enter type ([R]ecursive, [C]ache recursive), [I]terative:").upper()
+	type_f = input("Enter type ([R]ecursive, [C]ache recursive), [I]terative, [B]inet:").upper()
 	start_time = time.time()
 	if type_f == 'R':
 		print(recursiveFib(x))
@@ -60,5 +73,7 @@ if __name__ == "__main__":
 		print(recursiveFibCached(x))
 	elif type_f == 'I':
 		print(iterativeFib(x))
+	elif type_f == 'B':
+		print(BinetformulaFibWithDecimal(x))
 
 	print(f"--- {time.time() - start_time} seconds ---")
