@@ -39,15 +39,26 @@ def recursiveFibCached(n):
 	else:
 		return recursiveFibCached(n-1) + recursiveFibCached(n-2)
 
+# iterative
+# This function can calculate the millionth Fibonacci number. In just 8s (on my laptop)
+def iterativeFib(n):
+    a, b = 0, 1
+
+    for i in range(n):
+        a, b = b, a + b
+
+    return a
 
 
 if __name__ == "__main__":
 	x = int(input('Enter the number: '))
-	type_f = input("Enter type ([R]ecursive, [C]ache recursive):").upper()
+	type_f = input("Enter type ([R]ecursive, [C]ache recursive), [I]terative:").upper()
 	start_time = time.time()
 	if type_f == 'R':
 		print(recursiveFib(x))
 	elif type_f == 'C':
 		print(recursiveFibCached(x))
+	elif type_f == 'I':
+		print(iterativeFib(x))
 
 	print(f"--- {time.time() - start_time} seconds ---")
