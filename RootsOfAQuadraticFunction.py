@@ -23,7 +23,12 @@ def Roots(a, b, c):
         '''
 
 
+#if __name__ == "__main__":
+#    a, b, c = (input("For quadratic function 'f(x) = ax^2 + bx + c' enter a, b, c (separated by ' '): ")).split()
+#    a, b, c = int(a), int(b), int(c)
+#    print(Roots(a, b, c))
+
 if __name__ == "__main__":
-    a, b, c = (input("For quadratic function 'f(x) = ax^2 + bx + c' enter a, b, c (separated by ' '): ")).split()
-    a, b, c = int(a), int(b), int(c)
+    num = (input("For quadratic function 'f(x) = ax^2 + bx + c' enter a, b, c (separated by ' '): ")).split()
+    a, b, c = [int(i) for i in num]
     print(Roots(a, b, c))
